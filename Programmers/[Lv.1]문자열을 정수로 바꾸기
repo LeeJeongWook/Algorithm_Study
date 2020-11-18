@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string s) {
+    int mul = 1;
+    int answer = 0;
+    
+    for(int i = s.size()-1; i >= 0; i--){
+        if(s[i] == '-'){
+            answer *= -1;
+            break;
+        }
+        else if(s[i] == '+'){
+            break;
+        }
+        answer += ((s[i]-48) * mul);
+        mul *= 10;
+    }
+    return answer;
+}
