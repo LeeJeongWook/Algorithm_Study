@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <vector>
+#include <stdio.h>
+
+using namespace std;
+
+bool isPrime(int a) {
+	if(a < 2)	return false;
+	for (int i = 2; i * i <= a; i++) {
+		if ((a % i) == 0)	return false;
+	}
+	return true;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	 
+	//freopen("input.txt", "r", stdin);
+
+	int N, tmp, ans = 0;
+	vector<int> v;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		v.push_back(tmp);
+	}
+
+	for (int x : v) {
+		if (isPrime(x)) {
+			ans++;
+		}
+	}
+
+	cout << ans;
+
+	return 0;
+}
