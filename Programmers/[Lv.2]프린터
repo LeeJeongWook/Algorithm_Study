@@ -1,0 +1,42 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> priorities, int location) {
+    int answer = 0;
+    int cnt = 0, idx = 0;
+    
+    for(int i = 9; i > 0; i--){
+        for(int j = idx; j < priorities.size(); j++){
+            if(i == priorities[j]){
+                cnt++;
+                cout << "cnt: " << cnt << endl;
+                if(j == location){
+                    answer = cnt;
+                    continue;
+                }
+                cout << "j: " << j << endl;
+                // cout << "priorities.size(): " << priorities.size() <<endl;
+                cout << "priorities[j]: " << priorities[j] << endl;
+                priorities.erase(priorities.begin()+j);
+                
+                idx = j;
+                cout << "idx: " << idx << endl;
+                if(j == priorities.size()){ //prior를 끝까지 탐색했을 때
+                    cout << "와오" << endl;
+                    j = 0;
+                }
+                //break;  //idx 부터 재탐색
+            }
+        }
+        if(answer != 0){
+            break;
+        }
+    }
+    
+    cout << "answer: " << answer << endl;
+    return answer;
+}
