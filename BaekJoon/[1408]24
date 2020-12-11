@@ -1,0 +1,55 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string input[2];
+	int hr[3], min[3], sec[3];
+
+	freopen("input.txt", "r", stdin);
+
+	cin >> input[0] >> input[1];
+
+	for (int i = 0; i < 2; i++) {
+		hr[i] = atoi(&input[i][0]);
+		min[i] = atoi(&input[i][3]);;
+		sec[i] = atoi(&input[i][6]);;
+	}
+	hr[2] = hr[1] - hr[0];
+
+	if (min[0] > min[1]) {
+		hr[2]--;
+		min[1] += 60;
+	}
+	min[2] = min[1] - min[0];
+
+	if (sec[0] > sec[1]) {
+		min[2]--;
+		sec[1] += 60;
+	}
+	sec[2] = sec[1] - sec[0];
+
+	if (hr[2] < 10) {
+		cout << 0 << hr[2] << ":";
+	}
+	else {
+		cout << hr[2] << ":";
+	}
+	if (min[2] < 10) {
+		cout << 0 << min[2] << ":";
+	}
+	else {
+		cout << min[2] << ":";
+	}
+	if (sec[2] < 10) {
+		cout << 0 << sec[2];
+	}
+	else {
+		cout << sec[2];
+	}
+
+	return 0;
+}
