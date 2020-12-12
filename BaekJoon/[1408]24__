@@ -8,6 +8,7 @@ using namespace std;
 int main() {
 	string input[2];
 	int hr[3], min[3], sec[3];
+	int startTime, endTime;
 
 	freopen("input.txt", "r", stdin);
 
@@ -15,9 +16,12 @@ int main() {
 
 	for (int i = 0; i < 2; i++) {
 		hr[i] = atoi(&input[i][0]);
-		min[i] = atoi(&input[i][3]);;
-		sec[i] = atoi(&input[i][6]);;
+		min[i] = atoi(&input[i][3]);
+		sec[i] = atoi(&input[i][6]);
+		startTime = (hr[i] * 3600) + 
 	}
+
+	/*
 	hr[2] = hr[1] - hr[0];
 
 	if (min[0] > min[1]) {
@@ -50,6 +54,6 @@ int main() {
 	else {
 		cout << sec[2];
 	}
-
+	*/
 	return 0;
 }
