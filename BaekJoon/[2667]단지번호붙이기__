@@ -1,32 +1,62 @@
-#define _CRT_SECURE_NO_WARNINGS
-//#include <stdio.h>
+#define _CRT_SECURE_NO_DEPRECATE
 #include <iostream>
 #include <vector>
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
-int main() {
-	int N, tmp;
-	
-	freopen("input.txt", "r", stdin);
+#define MAX 25
 
+int N, cnt;
+int dx[4] = { 1, -1, 0, 0 };
+int dy[4] = { 0, 0, 1, -1 };
+int field[MAX][MAX];
+bool visit[MAX][MAX];
+vector<int> ans;
+
+void DFS(int x, int y) {
+	cnt++;
+	visit[x][y] = true;
+
+	for (int i = 0; i < 4; i++) {
+		int nx = x + dx[i];
+		int ny = y + dy[i];
+		if (nx < 0 || nx >= N || ny < 0 || ny >= N) {
+			continue;
+		}
+		else if (field[nx][ny] == 1 && visit[nx][ny] == false) {
+			DFS(nx, ny);
+		}
+	}
+}
+
+int main() {
+	freopen("input.txt", "r", stdin);
+	string str;
 	cin >> N;
 
-	vector<int> v(N, 0);
-	vector<vector<int>> field(N, vector<int>(N, 0));
-
 	for (int i = 0; i < N; i++) {
+		cin >> str;
 		for (int j = 0; j < N; j++) {
-			cin >> tmp;
-			field[i][j] = tmp;
+			field[i][j] = str[j] - '0';
 		}
 	}
 
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
-			cout << field[i][j];
+			if (field[i][j] == 1 && visit[i][j] == false) {
+				cnt = 0;
+				DFS(i, j);
+				ans.push_back(cnt);
+			}
 		}
-		cout << endl;
+	}
+	sort(ans.begin(), ans.end());
+	cout << ans.size() << endl;
+	
+	for (int x : ans) {
+		cout << x << endl;
 	}
 
 	return 0;
