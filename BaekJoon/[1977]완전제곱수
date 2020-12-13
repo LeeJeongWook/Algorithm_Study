@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	freopen("input.txt", "r", stdin);
+	int M, N, min, ans = 0;
+
+	cin >> M >> N;
+	
+	for (int i = ceil(sqrt(M)); i <= sqrt(N); i++) {
+		if (i == ceil(sqrt(M))) {
+			min = pow(i, 2);
+		}
+		ans += pow(i, 2);
+	}
+
+	if (ans == 0) {
+		cout << -1 << endl;
+	}
+	else{
+		cout << ans << endl << min;
+	}
+
+	return 0;
+}
