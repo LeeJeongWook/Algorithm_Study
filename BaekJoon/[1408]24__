@@ -8,7 +8,7 @@ using namespace std;
 int main() {
 	string input[2];
 	int hr[3], min[3], sec[3];
-	int startTime, endTime;
+	int startTime, endTime, tmp;
 
 	freopen("input.txt", "r", stdin);
 
@@ -18,42 +18,34 @@ int main() {
 		hr[i] = atoi(&input[i][0]);
 		min[i] = atoi(&input[i][3]);
 		sec[i] = atoi(&input[i][6]);
-		startTime = (hr[i] * 3600) + 
 	}
+	startTime = (hr[0] * 3600) + (min[0] * 60) + sec[0];
+	endTime = (hr[1] * 3600) + (min[1] * 60) + sec[1];
 
-	/*
-	hr[2] = hr[1] - hr[0];
-
-	if (min[0] > min[1]) {
-		hr[2]--;
-		min[1] += 60;
-	}
-	min[2] = min[1] - min[0];
-
-	if (sec[0] > sec[1]) {
-		min[2]--;
-		sec[1] += 60;
-	}
-	sec[2] = sec[1] - sec[0];
-
-	if (hr[2] < 10) {
-		cout << 0 << hr[2] << ":";
+	if (startTime < endTime) {
+		tmp = endTime - startTime;
 	}
 	else {
-		cout << hr[2] << ":";
+		tmp = (86400 - startTime) + endTime;
 	}
-	if (min[2] < 10) {
-		cout << 0 << min[2] << ":";
-	}
-	else {
-		cout << min[2] << ":";
-	}
-	if (sec[2] < 10) {
-		cout << 0 << sec[2];
-	}
-	else {
-		cout << sec[2];
-	}
-	*/
+
+	hr[2] = tmp / 3600;
+	tmp %= 3600;
+	min[2] = tmp / 60;
+	tmp %= 60;
+	sec[2] = tmp;
+
+	cout.width(2);
+	cout.fill('0');
+	cout << hr[2];
+	cout << ":";
+	cout.width(2);
+	cout.fill('0');
+	cout << min[2];
+	cout << ":";
+	cout.width(2);
+	cout.fill('0');
+	cout << sec[2];
+
 	return 0;
 }
