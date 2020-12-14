@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	freopen("input.txt", "r", stdin);
+	
+	int testCase, playerCnt, intTmp;
+	string strTmp;
+	
+	cin >> testCase;
+
+	for (int test = 0; test < testCase; test++) {
+		vector<pair<int, string>> player;
+		cin >> playerCnt;
+		for (int i = 0; i < playerCnt; i++) {
+			cin >> intTmp >> strTmp;
+			player.push_back(pair<int, string>(intTmp, strTmp));
+		}
+		sort(player.begin(), player.end());
+		cout << player[playerCnt-1].second<< endl;
+	}
+
+	return 0;
+}
