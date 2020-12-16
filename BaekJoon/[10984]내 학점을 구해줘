@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_DEPRECATE
+
+#include <iostream>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	freopen("input.txt", "r", stdin);
+
+	int T, N, C, grade;
+	double G, sum, avg;
+
+	cin >> T;
+
+	for (int test = 0; test < T; test++) {
+		grade = 0;
+		sum = 0;
+		cin >> N;
+		for (int i = 0; i < N; i++) {
+			cin >> C >> G;
+			grade += C;
+			sum += C * G;
+		}
+		avg = sum / grade;
+
+		cout << grade << " " << round(avg * 10) / 10 << endl;
+	}
+
+	return 0;
+}
