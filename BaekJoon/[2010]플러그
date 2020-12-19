@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	freopen("input.txt", "r", stdin);
+
+	int N, tmp, ans = 0;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		ans += tmp;
+		if (i == 0)
+			continue;
+		ans--;
+	}
+
+	cout << ans << endl;
+
+	return 0;
+}
