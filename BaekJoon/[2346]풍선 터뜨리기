@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	freopen("input.txt", "r", stdin);
+
+	int N, now, next, tmp;
+	vector<pair<int, int>> v;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		v.push_back(make_pair(tmp, i + 1));
+	}
+	now = 0;
+	while (v.empty() != true) {
+		cout << v[now].second;
+		next = v[now].first;
+		if (next > 0)
+			next--;
+		v.erase(v.begin() + now);
+		now += next;
+		N--;
+		if (N == 0)
+			break;
+		now = (now >= 0 ? now : N + now % N);
+		now %= N;
+		cout << " ";
+	}
+	return 0;
+}
