@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int gcd(int x, int y) {
+	if (y == 0) {
+		return x;
+	}
+	else {
+		return gcd(y, x % y);
+	}
+}
+
+int main() {
+	freopen("input.txt", "r", stdin);
+	int a, b, x;
+	long long int res1 = 1, res2 = 1; //결과
+
+	cin >> a >> b;
+
+	b = b / a;
+	
+	for (int i = 1; i * i <= b; i++) {
+		if (b % i == 0 && gcd(i, b / i) == 1) {
+			x = i;
+		}
+	}
+
+	//res1과 res2를 구한다.
+	res1 = a * x;
+	res2 = a * (b / x);
+
+	cout << res1 << ' ' << res2;
+}
