@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	freopen("input.txt", "r", stdin);
+
+	int num[1001] = { 0, }, tmp, sum = 0, mostCnt = 0, mostNum;
+
+	for (int i = 0; i < 10; i++) {
+		cin >> tmp;
+		num[tmp]++;
+		sum += tmp;
+		if (num[tmp] > mostCnt) {
+			mostCnt = num[tmp];
+			mostNum = tmp;
+		}
+	}
+	cout << sum / 10 << '\n' << mostNum;
+
+	return 0;
+}
