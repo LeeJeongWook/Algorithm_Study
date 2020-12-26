@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	freopen("input.txt", "r", stdin);
+
+	int a, b, tmp = 0, max = 0;
+
+	for (int i = 0; i < 10; i++) {
+		cin >> a >> b;
+		tmp -= a;
+		tmp += b;
+		if (tmp > max) {
+			max = tmp;
+		}
+	}
+	
+	cout << max;
+
+	return 0;
+}
