@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	freopen("input.txt", "r", stdin);
+
+	int arr[5][4], tmp, ans_num, ans_score = 0;
+
+	for (int i = 0; i < 5; i++) {
+		tmp = 0;
+		for (int j = 0; j < 4; j++) {
+			cin >> arr[i][j];
+			tmp += arr[i][j];
+		}
+		if (tmp > ans_score) {
+			ans_score = tmp;
+			ans_num = i + 1;
+		}
+	}
+
+	cout << ans_num << " " << ans_score;
+
+	return 0;
+}
