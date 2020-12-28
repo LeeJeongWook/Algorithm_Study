@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <stdio.h>
+
+using namespace std;
+
+bool isPrime(int a) {
+	if (a < 2)	return false;
+	for (int i = 2; i * i <= a; i++) {
+		if ((a % i) == 0)	return false;
+	}
+	return true;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	freopen("input.txt", "r", stdin);
+
+	int n, ans;
+
+	while (true) {
+		cin >> n;
+		if (n == 0)
+			break;
+		ans = 0;
+		for (int i = n + 1; i <= n * 2; i++) {
+			if (isPrime(i) == true) {
+				ans++;
+			}
+		}
+		cout << ans << '\n';
+	}
+
+	return 0;
+}
