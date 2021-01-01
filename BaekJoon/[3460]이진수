@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	freopen("input.txt", "r", stdin);
+
+	int testCase, num;
+
+	cin >> testCase;
+
+	for (int test = 0; test < testCase; test++) {
+		cin >> num;
+		int i = 0;
+		while (num != 1) {
+			if ((num % 2) == 1)
+				cout << i << " ";
+			i++;
+			num /= 2;
+		}
+		cout << i << '\n';
+	}
+
+	return 0;
+}
