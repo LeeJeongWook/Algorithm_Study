@@ -2,75 +2,72 @@
 #include <iostream>
 #include <queue>
 
-#define MAX_SIZE 1000 + 1
-
 using namespace std;
 
+#define MAX 1000+1
+
 struct tomato {
-    int y, x;
+	int x, y;
 };
 
+int dx[4] = { 0, 0, 1, -1 };
+int dy[4] = { 1, -1, 0, 0 };
+int box[MAX][MAX];
 queue<tomato> q;
 
-int dx[4] = { 1, 0, -1, 0 };
-int dy[4] = { 0, 1, 0 , -1 };
+int n, m, ans = 0;
 
-int n, m, result = 0;
-int graph[MAX_SIZE][MAX_SIZE];
-
-bool IsInside(int ny, int nx) {
-    return (0 <= nx && 0 <= ny && nx < m&& ny < n);
+bool IsInside(int nx, int ny) {
+	return (0 <= nx && 0 <= ny && nx < m&& ny < n);
 }
 
-void bfs(void) {
-    while (!q.empty()) {
-        int y = q.front().y;
-        int x = q.front().x;
-        q.pop();
+void BFS() {
+	while (!q.empty()) {
+		int x = q.front().x;
+		int y = q.front().y;
+		q.pop();
 
-        for (int i = 0; i < 4; i++) {
-            int ny = y + dy[i];
-            int nx = x + dx[i];
+		for (int i = 0; i < 4; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
 
-            if (IsInside(ny, nx) == 1 && graph[ny][nx] == 0) {
-                graph[ny][nx] = graph[y][x] + 1;
-                q.push({ ny, nx });
-            }
-        }
-    }
+			if ((IsInside(nx, ny) == 1) && box[ny][nx] == 0) {
+				box[ny][nx] = box[y][x] + 1;
+				q.push({ nx, ny });
+			}
+		}
+	}
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-    freopen("input.txt", "r", stdin);
+	freopen("input.txt", "r", stdin);
 
-    cin >> m >> n;
-    
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> graph[i][j];
-            if (graph[i][j] == 1) {
-                q.push({ i, j });
-            }
-        }
-    }
+	cin >> m >> n;
 
-    bfs();
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cin >> box[i][j];
+			if (box[i][j] == 1)
+				q.push({ j, i });
+		}
+	}
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            if (graph[i][j] == 0) {
-                cout << -1;
-                return 0;
-            } 
-            if (result < graph[i][j]) {
-                result = graph[i][j];
-            }
-        }
-    }
-    cout << result - 1;
-    return 0;
+	BFS();
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (box[i][j] == 0) {
+				cout << -1;
+				return 0;
+			}
+			if (ans < box[i][j])
+				ans = box[i][j];
+		}
+	}
+	cout << ans - 1;
+	return 0;
 }
