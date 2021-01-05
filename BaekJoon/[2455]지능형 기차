@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+	
+	int max = 0, sum = 0, a, b;
+
+	for (int i = 0; i < 4; i++) {
+		cin >> a >> b;
+		sum -= a;
+		sum += b;
+		if (sum > max) {
+			max = sum;
+		}
+	}
+
+	cout << max;
+
+	return 0;
+}
