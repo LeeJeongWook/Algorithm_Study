@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+	
+	int tmp, sum = 0, cmp;
+	vector<int> v;
+
+	for (int i = 0; i < 9; i++) {
+		cin >> tmp;
+		v.push_back(tmp);
+		sum += tmp;
+	}
+	cmp = sum - 100;
+
+	for (int i = 0; i < 9; i++) {
+		for (int j = i+1; j < 9; j++) {
+			if ((v[i] + v[j]) == cmp) {
+				tmp = v[j];
+				v.erase(find(v.begin(), v.end(), v[i]));
+				v.erase(find(v.begin(), v.end(), tmp));
+				break;
+			}
+		}
+		if (v.size() < 9)
+			break;
+	}
+
+	sort(v.begin(), v.end());
+
+	for (int x : v) {
+		cout << x << '\n';
+	}
+
+	return 0;
+}
