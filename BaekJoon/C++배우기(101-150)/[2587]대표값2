@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+	
+	int tmp, sum = 0, avg;
+	vector<int> v;
+
+	for (int i = 0; i < 5; i++) {
+		cin >> tmp;
+		sum += tmp;
+		v.push_back(tmp);
+	}
+	sort(v.begin(), v.end());
+
+	avg = sum / 5;
+
+	cout << avg << '\n' << v[2];
+
+	return 0;
+}
