@@ -1,0 +1,41 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+	
+	int T, tmp, ans;
+
+	cin >> T;
+
+	for (int test = 0; test < T; test++) {
+		vector<int> v;
+		ans = 0;
+		for (int i = 0; i < 5; i++) {
+			cin >> tmp;
+			v.push_back(tmp);
+		}
+		sort(v.begin(), v.end());
+		v.erase(v.begin());
+		v.erase(v.begin() + v.size() - 1);
+		if ((v[2] - v[0]) >= 4) {
+			cout << "KIN" << '\n';
+			continue;
+		}
+		else {
+			for (int x : v) {
+				ans += x;
+			}
+			cout << ans << '\n';
+		}
+	}
+
+	return 0;
+}
