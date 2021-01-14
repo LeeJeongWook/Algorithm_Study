@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int T, tmp, sum;
+	
+	cin >> T;
+
+	for (int test = 0; test < T; test++) {
+		vector<int> v;
+		sum = 0;
+		for (int i = 0; i < 7; i++) {
+			cin >> tmp;
+			if ((tmp % 2) == 0) {
+				v.push_back(tmp);
+				sum += tmp;
+			}
+		}
+		sort(v.begin(), v.end());
+		cout << sum << " " << v[0] << '\n';
+	}
+
+	return 0;
+}
