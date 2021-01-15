@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int W = 0, K = 0, tmp;
+	vector<int> w;
+	vector<int> k;
+
+	for (int i = 0; i < 10; i++) {
+		cin >> tmp;
+		w.push_back(tmp);
+	}
+
+	for (int i = 0; i < 10; i++) {
+		cin >> tmp;
+		k.push_back(tmp);
+	}
+
+	sort(w.begin(), w.end(), greater<int>());
+	sort(k.begin(), k.end(), greater<int>());
+
+	for (int i = 0; i < 3; i++) {
+		W += w[i];
+		K += k[i];
+	}
+
+	cout << W << " " << K;
+
+	return 0;
+}
