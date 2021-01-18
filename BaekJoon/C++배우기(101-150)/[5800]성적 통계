@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int K, N, tmp, gap;
+
+	cin >> K;
+
+	for (int i = 1; i <= K; i++) {
+		vector<int> v;
+		cin >> N;
+		gap = 0;
+
+		for (int j = 0; j < N; j++) {
+			cin >> tmp;
+			v.push_back(tmp);
+		}
+		sort(v.begin(), v.end());
+
+		for (int k = 0; k < N; k++) {
+			if ((k != (N - 1)) && (v[k + 1] - v[k] > gap)) {
+				gap = v[k + 1] - v[k];
+			}
+		}
+
+		cout << "Class " << i << '\n';
+		cout << "Max " << *max_element(v.begin(), v.end()) << ", "
+			<< "Min " << *min_element(v.begin(), v.end()) << ", "
+			<< "Largest gap " << gap << '\n';
+	}
+
+	return 0;
+}
