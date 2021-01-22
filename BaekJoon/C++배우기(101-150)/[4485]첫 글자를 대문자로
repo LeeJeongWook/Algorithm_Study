@@ -1,0 +1,43 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() {
+	//ios::sync_with_stdio(false);
+	//cin.tie(NULL);
+	//cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, cnt;
+	char c;
+	string s;
+
+	cin >> N;
+	getline(cin, s);
+	cout << N;
+	cout << s;
+
+	/*
+	for (int i = 0; i < N; i++) {
+		vector<char> v;
+		cnt = 0;
+		while (1) {
+			c = cin.get();
+			if (cnt == 0) {
+				c = toupper(c);
+				cnt++;
+			}
+			v.push_back(c);
+			if (c == '\n')
+				break;
+		}
+		for (char x : v) {
+			cout << x;
+		}
+	}
+	*/
+	return 0;
+}
