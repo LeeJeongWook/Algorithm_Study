@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int testCase, tmp;
+	string s1, s2;
+
+	cin >> testCase;
+
+	for (int test = 0; test < testCase; test++) {
+		cin >> s1 >> s2;
+		cout << "Distances: ";
+		for (int i = 0; i < s1.size(); i++) {
+			if (s1[i] > s2[i]) {
+				tmp = 26 - (s1[i] - s2[i]);
+			}
+			else
+				tmp = s2[i] - s1[i];
+
+			cout << tmp << " ";
+		}
+		cout << '\n';
+	}
+
+	return 0;
+}
