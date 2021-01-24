@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	while(1) {
+		string s1, s2;
+		getline(cin, s1);
+		if (s1 == "END")
+			break;
+
+		for (int i = s1.size()-1; i >= 0; i--) {
+			s2.push_back(s1[i]);
+		}
+		
+		cout << s2 << '\n';
+
+	}
+
+	return 0;
+}
