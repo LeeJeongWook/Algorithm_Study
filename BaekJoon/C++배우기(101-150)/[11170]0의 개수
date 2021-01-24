@@ -1,0 +1,43 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int searchZero(int n) {
+	int cnt = 0;
+	if (n == 0) {
+		cnt = 1;
+		return cnt;
+	}
+	while (n != 0) {
+		if ((n % 10) == 0) {
+			cnt++;
+		}
+		n /= 10;
+	}
+	return cnt;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int testCase, N, M, ans;
+
+	cin >> testCase;
+
+	for (int test = 0; test < testCase; test++) {
+		ans = 0;
+		cin >> N >> M;
+
+		for (int i = N; i <= M; i++) {
+			ans+= searchZero(i);
+		}
+		cout << ans << '\n';
+	}
+
+	return 0;
+}
