@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+string day[7] = { "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday" };
+int month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int M, D, cnt = 0;
+
+	cin >> D >> M;
+
+	if (M > 1) {
+		for (int i = 0; i < M - 1; i++) {
+			cnt += month[i];
+		}
+	}
+	cnt += D;
+
+	cout << day[cnt % 7];
+
+	return 0;
+}
