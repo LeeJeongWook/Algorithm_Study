@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_DEPRECATE
 #include <iostream>
-#include <stack>
-#include <vector>
+#include <string>
+
 using namespace std;
 
 int main() {
@@ -10,32 +10,32 @@ int main() {
 	cout.tie(NULL);
 	freopen("input.txt", "r", stdin);
 
-	int N, M, tmp, cnt = 0;
-	stack<int> s;
-	vector<int> v;
+	string N;
+	int M;
 
 	cin >> N >> M;
 
-	if (M > N)
-		M = N;
+	int len = N.length();
+	int num = stoi(N);
 
-	while (N != 0) {
-		tmp = N % 10;
-		N /= 10;
-		s.push(tmp);
-	}
-
-	for (int i = 0; i < (s.size()+1); i++) {
-		v.push_back(s.top());
-		s.pop();
-	}
-
-	while (cnt < M) {
-		for (int x : v) {
-			cout << x;
-			cnt++;
+	string ans;
+	if (len * num >= M) {
+		int cnt = 0;
+		while (1) {
+			if (cnt + len > M)
+				break;
+			ans += N;
+			cnt += len;
+		}
+		for (int i = 0; i < M - cnt; i++) {
+			ans += N[i];
 		}
 	}
+	else {
+		for (int i = 0; i < num; i++)
+			ans += N;
+	}
+	cout << ans;
 
 	return 0;
 }
