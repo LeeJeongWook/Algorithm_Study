@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	string str;
+
+	while (1) {
+		int a = 0, b = 0, c = 0, d = 0;
+
+		getline(cin, str);
+		if (str == "\n")
+			break;
+
+		for (int i = 0; i < str.size() + 1; i++) {
+			if ((97 <= (int)str[i]) && ((int)str[i] <= 122)) {
+				a++;
+			}
+			else if ((65 <= (int)str[i]) && ((int)str[i] <= 90)) {
+				b++;
+			}
+			else if ((48<= (int)str[i]) && ((int)str[i] <= 57)) {
+				c++;
+			}
+			else if ((int)str[i] == 32) {
+				d++;
+			}
+		}
+		cout << a << " " << b << " " << c << " " << d << '\n';
+		str = "\n";
+	}
+
+	return 0;
+}
