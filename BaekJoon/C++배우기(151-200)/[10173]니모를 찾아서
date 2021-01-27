@@ -1,0 +1,63 @@
+/*
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+string nemo[16] = { "nemo", "Nemo", "nEmo", "neMo", "nemO", "NEmo", "nEMo", "neMO", "NemO", "NeMo", "nEmO", "NEMo", "nEMO", "NEmO", "NeMO", "NEMO" };
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	string str;
+
+	while (1) {
+		getline(cin, str);
+		if (str == "EOI") {
+			break;
+		}
+		for (int i = 0; i < 16; i++) {
+			if (str.find(nemo[i], 0) != -1) {
+				cout << "Found" << '\n';
+				break;
+			}
+			if (i == 15) {
+				cout << "Missing" << '\n';
+				break;
+			}
+		}
+	}
+	
+	return 0;
+}
+*/
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr), cout.tie(nullptr);
+
+	freopen("input.txt", "r", stdin);
+	string s;
+	string nemo("nemo");
+	while (getline(cin, s)) {
+		if (s == "EOI") break;
+
+		cout << (search(s.begin(), s.end(), nemo.begin(), nemo.end(),
+			[](char c1, char c2) {cout << c1 << endl; cout << c2 << endl; return toupper(c1) == toupper(c2); }) != s.end() ? "Found\n" : "Missing\n");
+	}
+
+	return 0;
+}
