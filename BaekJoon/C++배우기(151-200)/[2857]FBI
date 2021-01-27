@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	vector<int> ans;
+	vector<string> str(5);
+
+	for (string &s : str) {
+		cin >> s;
+	}
+
+	for (int i = 0; i < 5; i++) {
+		if ((str[i].find("FBI", 0)) != -1) {
+			ans.push_back(i+1);
+		}
+	}
+
+	if (ans.empty()) {
+		cout << "HE GOT AWAY!";
+	}
+	else {
+		for (int x : ans) {
+			cout << x << " ";
+		}
+	}
+
+	return 0;
+}
