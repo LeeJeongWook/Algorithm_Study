@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int student[30] = { 0, };
+	int	 tmp;
+	
+	vector<int> ans;
+
+	for (int i = 0; i < 28; i++) {
+		cin >> tmp;
+		student[tmp - 1] = 1;
+	}
+
+	for (int i = 0; i < 30; i++) {
+		if (student[i] == 0)
+			ans.push_back(i+1);
+	}
+	
+	sort(ans.begin(), ans.end());
+
+	for (int x : ans) {
+		cout << x << '\n';
+	}
+
+	return 0;
+}
