@@ -1,0 +1,47 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int num, cntA = 0, cntB = 0;
+	vector<int> v, a, d;
+	bool ascending = false, descending = false;
+
+	for (int i = 0; i < 8; i++) {
+		cin >> num;
+		v.push_back(num);
+		a.push_back(num);
+		d.push_back(num);
+	}
+	sort(a.begin(), a.end());
+	sort(d.begin(), d.end(), greater<int>());
+
+	for (int i = 0; i < 8; i++) {
+		if (v[i] == a[i]) {
+			cntA++;
+		}
+		else if (v[i] == d[i]) {
+			cntB++;
+		}
+	}
+
+	if (cntA == 8) {
+		cout << "ascending";
+	}
+	else if (cntB == 8) {
+		cout << "descending";
+	}
+	else {
+		cout << "mixed";
+	}
+
+	return 0;
+}
