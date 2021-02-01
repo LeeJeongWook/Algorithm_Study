@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N;
+	char tmp;
+	vector<char> v;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		int a = 0, b = 0, sqr = 26*26, pos = 1000;
+		for (int j = 0; j < 3; j++) {
+			cin >> tmp;
+			a += (((int)tmp - 65) * sqr);
+			sqr /= 26;
+		}
+		cin >> tmp;
+
+		for (int k = 0; k < 4; k++) {
+			cin >> tmp;
+			b += (((int)tmp - 48) * pos);
+			pos /= 10;
+		}
+		if ((abs(a - b) <= 100)) {
+			cout << "nice" << '\n';
+		}
+		else {
+			cout << "not nice" << '\n';
+		}
+	}
+
+	return 0;
+}
