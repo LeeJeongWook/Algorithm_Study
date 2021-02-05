@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int n, tmp;
+	
+	cin >> n;
+
+	while (1) {
+		cin >> tmp;
+		if (tmp == 0)
+			break;
+		if ((tmp % n) == 0) 
+			cout << tmp << " is a multiple of " << n << "." << '\n';
+		else
+			cout << tmp << " is NOT a multiple of " << n << "." << '\n';
+	}
+
+	return 0;
+}
