@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+bool seats[100] = {0,};
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    freopen("input.txt", "r", stdin);
+
+    int joiCnt = 0, ioiCnt = 0;
+    string str;
+
+    cin >> str;
+
+    for(int i = 0; i < str.size()-2; i++){
+        if((str[i] == 'J') && (str[i+1] == 'O') && (str[i+2] == 'I')){
+            joiCnt++;
+        }
+        if((str[i] == 'I') && (str[i+1] == 'O') && (str[i+2] == 'I')){
+            ioiCnt++;
+        }
+    }
+    
+    cout << joiCnt << '\n' << ioiCnt;
+
+    return 0;
+}
