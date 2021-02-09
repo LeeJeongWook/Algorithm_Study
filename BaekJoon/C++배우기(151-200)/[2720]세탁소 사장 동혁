@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int testCase, change, Q, D, N, P;
+
+	cin >> testCase;
+
+	for (int test = 0; test < testCase; test++) {
+		cin >> change;
+
+		Q = change / 25;
+		change %= 25;
+		D = change / 10;
+		change %= 10;
+		N = change / 5;
+		change %= 5;
+		P = change / 1;
+		
+		cout << Q << " " << D << " " << N << " " << P << '\n';
+	}
+
+	return 0;
+}
