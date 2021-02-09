@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int gcd(int x, int y) {
+	int z;
+	if (x < y) {
+		z = x;
+		x = y;
+		y = z;
+	}
+	while (y != 0) {
+		z = x % y;
+		x = y;
+		y = z;
+	}
+	return x;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int testCase, a, b, min, max;
+
+	cin >> testCase;
+
+	for (int test = 0; test < testCase; test++) {
+		cin >> a >> b;
+		max = gcd(a, b);
+		min = (a * b) / max;
+		cout << min << " " << max << '\n';
+	}
+
+	return 0;
+}
