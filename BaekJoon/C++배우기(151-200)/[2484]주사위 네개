@@ -1,0 +1,68 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int dice[6] = { 1, 2, 3, 4, 5, 6 };
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, tmp, price, max = 0;
+
+	cin >> N;
+
+	for (int test = 0; test < N; test++) {
+		int arr[6] = { 0, };
+		vector<pair<int, int>> v;
+		for (int i = 0; i < 4; i++) {
+			cin >> tmp;
+
+			for (int j = 0; j < 6; j++) {
+				if (tmp == dice[j])
+					arr[j]++;
+			}
+		}
+		for (int k = 0; k < 6; k++) {
+			v.push_back(make_pair(arr[k], dice[k]));
+		}
+		sort(v.begin(), v.end(), greater<>());
+		
+		switch (v[0].first)
+		{
+			case 1:
+				price = v[0].second * 100;
+				break;
+
+			case 2:
+				if (v[1].first == 2) {
+					price = 2000 + (v[0].second * 500) + (v[1].second * 500);
+				}
+				else {
+					price = 1000 + (v[0].second * 100);
+				}
+				break;
+
+			case 3:
+				price = 10000 + (v[0].second * 1000);
+				break;
+
+			case 4:
+				price = 50000 + (v[0].second * 5000);
+				break;
+
+			default:
+				break;
+		}
+		if (max < price)
+			max = price;
+	}
+	cout << max;
+
+	return 0;
+}
