@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, tmp, S = 0;
+	vector<int> va, vb;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		va.push_back(tmp);
+	}
+	for (int j = 0; j < N; j++) {
+		cin >> tmp;
+		vb.push_back(tmp);
+	}
+	sort(va.begin(), va.end());
+	sort(vb.begin(), vb.end(), greater<int>());
+
+	for (int k = 0; k < N; k++) {
+		S += va[k] * vb[k];
+	}
+
+	cout << S;
+
+	return 0;
+}
