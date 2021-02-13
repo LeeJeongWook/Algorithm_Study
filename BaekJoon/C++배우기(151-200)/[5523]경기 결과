@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, A = 0, B = 0, tmpA, tmpB;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmpA >> tmpB;
+		if(tmpA != tmpB)
+			tmpA < tmpB ? B++ : A++;
+	}
+
+	cout << A  << " " << B;
+
+	return 0;
+}
