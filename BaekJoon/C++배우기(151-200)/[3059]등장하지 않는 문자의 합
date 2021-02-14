@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+char alp[26] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, ans;
+	
+	string str;
+
+	vector<int> v;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> str;
+		ans = 0;
+		char idx[26] = { 0, };
+		for (int i = 0; i < str.size(); i++) {
+			for (int j = 0; j < 26; j++) {
+				if (str[i] == alp[j])
+					idx[j]++;
+			}
+		}
+		for (int i = 0; i < 26; i++) {
+			if (idx[i] == 0) 
+				ans += (int)alp[i];
+		}
+		cout << ans << '\n';
+	}
+	
+	return 0;
+}
