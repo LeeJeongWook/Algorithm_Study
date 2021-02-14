@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	//freopen("input.txt", "r", stdin);
+
+	int N;
+
+	cin >> N;
+
+	cout << (N * (N - 1) * (N - 2) * (N - 3)) / 24;
+
+	return 0;
+}
