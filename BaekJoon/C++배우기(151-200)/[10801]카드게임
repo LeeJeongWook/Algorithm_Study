@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+	
+	int tmp, a = 0, b = 0;
+	vector<int> A, B;
+
+	for (int i = 0; i < 10; i++) {
+		cin >> tmp;
+		A.push_back(tmp);
+	}
+	for (int i = 0; i < 10; i++) {
+		cin >> tmp;
+		B.push_back(tmp);
+	}
+
+	for (int i = 0; i < 10; i++) {
+		if (A[i] > B[i]) {
+			a++;
+		}
+		else if (A[i] < B[i]) {
+			b++;
+		}
+	}
+	if (a == b) {
+		cout << "D";
+	}
+	else {
+		a > b ? cout << "A" : cout << "B";
+	}
+
+	return 0;
+}
