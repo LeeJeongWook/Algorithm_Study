@@ -1,0 +1,37 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, Ti, Si, tmp;
+	vector<pair<int, int>> v;
+
+	cin >> N;
+
+	for (int test = 0; test < N; test++) {
+		cin >> Ti >> Si;
+		v.push_back(make_pair(Si, Ti));
+	}
+	sort(v.begin(), v.end());
+
+	for (int i = 0; i < v.size(); i++) {
+		tmp = v[i + 1].first - v[i + 1].second;
+		if (tmp < v[i].first)
+			break;
+	}
+
+	cout << v[0].first - v[0].second << '\n';
+
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i].first << " " << v[i].second << '\n';
+	}
+	return 0;
+}
