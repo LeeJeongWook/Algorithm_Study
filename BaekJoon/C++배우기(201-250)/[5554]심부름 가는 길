@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int min, sec = 0, tmp;
+
+	for (int i = 0; i < 4; i++) {
+		cin >> tmp;
+		sec += tmp;
+	}
+	
+	min = sec / 60;
+	sec %= 60;
+
+	cout << min << '\n';
+	cout << sec << '\n';
+
+	return 0;
+}
