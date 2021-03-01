@@ -1,0 +1,45 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <tuple>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, S, C, L, cnt = 1, ans;
+	vector<tuple<int, int, int, int>> v;
+
+	cin >> N;
+
+	for (int test = 1; test <= N; test++) {
+		cin >> S >> C >> L;
+		v.push_back(make_tuple(S, C, L, test));
+	}
+
+	sort(v.begin(), v.end(), greater<>());
+	/*
+	for (int i = 0; i < v.size(); i++) {
+		cout << get<0>(v[i]) << " " << get<1>(v[i]) << " " << get<2>(v[i]) << " " << get<3>(v[i]) << '\n';
+	}
+	*/
+	ans = get<3>(v[0]);
+
+	for (int i = 1; i < v.size(); i++) {
+		if ((get<0>(v[0])) == (get<0>(v[i]))) {
+			ans = get<3>(v[i]);
+		}
+		else {
+			break;
+		}
+	}
+	
+	cout << ans;
+
+	return 0;
+}
