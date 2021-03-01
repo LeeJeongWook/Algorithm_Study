@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+char alpha[26] = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	string str, ans;
+
+	while (1) {
+		bool check[26] = { 0, };
+		getline(cin, str);
+
+		if (str == "*")
+			break;
+
+		for (int i = 0; i < str.size(); i++) {
+			for (int j = 0; j < 26; j++) {
+				if (str[i] == alpha[j]) {
+					check[j] = true;
+				}
+			}
+		}
+		
+		for (int i = 0; i < 26; i++) {
+			if (check[i] == false) {
+				ans = "N";
+				break;
+			}
+			else {
+				ans = "Y";
+			}
+		}
+		cout << ans << '\n';
+	}
+
+	return 0;
+}
