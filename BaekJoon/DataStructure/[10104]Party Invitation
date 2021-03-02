@@ -1,0 +1,48 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int K, m, r, tmp;
+	vector<int> v;
+
+	cin >> K >> m;
+	
+	for (int i = 1; i <= K; i++) {
+		v.push_back(i);
+	}
+
+	for (int i = 0; i < m; i++) {
+		int times = 2;
+
+		cin >> r;
+		
+		tmp = r;
+
+		while (tmp <= v.size()) {
+			v[tmp - 1] = 0;
+			tmp = r * times;
+			times++;
+		}
+
+		for (int i = 0; i < v.size(); i++) {
+			if (v[i] == 0) {
+				v.erase(v.begin() + i);
+				i--;
+			}
+		}
+	}
+
+	for (int x : v) {
+		cout << x << '\n';
+	}
+
+	return 0;
+}
