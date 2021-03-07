@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int tmp = 0, ans = 0;
+	string str;
+
+	getline(cin, str, '\0');
+
+	for (int i = 0; i < str.size(); i++) {
+		if ((int)str[i] >= 48 && (int)str[i] <= 57) {
+			tmp *= 10;
+			tmp += (int)str[i] - 48;
+		}
+		else if(str[i] == ',') {
+			ans += tmp;
+			tmp = 0;
+		}
+	}
+	ans += tmp;
+
+	cout << ans;
+
+	return 0;
+}
