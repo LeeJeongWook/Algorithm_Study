@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+char vowel[5] = { 'a', 'e', 'i', 'o', 'u' };
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	string str;
+
+	getline(cin, str);
+
+	for (int i = 0; i < str.size() - 2; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (str[i] == vowel[j]) {
+				str.erase(str.begin() + i + 1, str.begin() + i + 3);
+			}
+		}
+	}
+	cout << str;
+
+	return 0;
+}
