@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int Factorial(int n) {
+	if (n <= 1)
+		return 1;
+	else
+		return n * Factorial(n - 1);
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, K, ans;
+
+	cin >> N >> K;
+
+	ans = Factorial(N) / (Factorial(N - K) * Factorial(K));
+
+	cout << ans;
+
+	return 0;
+}
