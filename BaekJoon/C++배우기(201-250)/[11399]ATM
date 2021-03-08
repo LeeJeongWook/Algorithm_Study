@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, tmp, ans = 0;
+	vector<int> P;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		P.push_back(tmp);
+	}
+	
+	sort(P.begin(), P.end());
+
+	tmp = 0;
+
+	for (int i = 0; i < N; i++) {
+		tmp = tmp + P[i];
+		ans += tmp;
+	}
+
+	cout << ans;
+	
+	return 0;
+}
