@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N;
+	double tmp;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> tmp;
+		cout.setf(ios::fixed);
+		cout.precision(2);
+		cout << "$" << round(tmp * 80) / 100 << endl;
+	}
+
+	return 0;
+}
