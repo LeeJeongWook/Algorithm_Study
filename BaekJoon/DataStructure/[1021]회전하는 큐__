@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, M, idx, front, back, ans = 0;
+	vector<int> v;
+	queue<int> q;
+
+	cin >> N >> M;
+
+	for (int i = 1; i <= N; i++) {
+		q.push(i);
+	}
+
+	for (int i = 0; i < M; i++) {
+		cin >> idx;
+
+		for (int j = 0; j < q.size(); j++) {
+
+		}
+		if (idx < (q.size() - idx)) {
+
+		}
+	}
+
+	return 0;
+}
