@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_DEPRECATE
 #include <iostream>
-#include <queue>
+#include <deque>
 #include <vector>
 
 using namespace std;
@@ -11,26 +11,51 @@ int main() {
 	cout.tie(NULL);
 	freopen("input.txt", "r", stdin);
 
-	int N, M, idx, front, back, ans = 0;
-	vector<int> v;
-	queue<int> q;
+	int N, M, tmp, idx, ans = 0;
+	deque<int> deq;
 
 	cin >> N >> M;
 
 	for (int i = 1; i <= N; i++) {
-		q.push(i);
+		deq.push_back(i);
 	}
 
 	for (int i = 0; i < M; i++) {
-		cin >> idx;
+		cin >> tmp;
 
-		for (int j = 0; j < q.size(); j++) {
-
+		for (int j = 0; j < deq.size(); j++) {
+			if (tmp == deq[j])
+				idx = j + 1;
 		}
-		if (idx < (q.size() - idx)) {
 
+		if (idx > (deq.size() / 2) + 1) {
+			while (1) {
+				if ((deq.front()) == tmp) {
+					deq.pop_front();
+					break;
+				}
+				else {
+					deq.push_front(deq.back());
+					deq.pop_back();
+					ans++;
+				}
+			}
+		}
+		else {
+			while (1) {
+				if ((deq.front()) == tmp) {
+					deq.pop_front();
+					break;
+				}
+				else {
+					deq.push_back(deq.front());
+					deq.pop_front();
+					ans++;
+				}
+			}
 		}
 	}
+	cout << ans;
 
 	return 0;
 }
