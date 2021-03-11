@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int T, n;
+
+	cin >> T;
+
+	for (int test = 0; test < T; test++) {
+		vector<int> v;
+		cin >> n;
+		for (int i = 1; i < n; i++) {
+			for (int j = i; j < n; j++) {
+				if (((i + j) == n) && (i != j)) {
+					v.push_back(i);
+					v.push_back(j);
+				}
+			}
+		}
+		cout << "Pairs for " << n << ": ";
+
+		for (int i = 0; i < v.size(); i+=2) {
+			if(i == 0)
+				cout << v[i] << " " << v[i + 1];
+			else
+				cout << ", " << v[i] << " " << v[i + 1];
+		}
+
+		cout << endl;
+	}
+
+
+	return 0;
+}
