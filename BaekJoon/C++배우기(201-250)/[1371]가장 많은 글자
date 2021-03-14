@@ -1,0 +1,45 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+char alpha[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    freopen("input.txt", "r", stdin);
+
+    string str;
+    int check[26] = {0,};
+    int max = 0;
+    vector<int> idx;
+
+    getline(cin, str, '\0');
+
+    for(int i = 0; i < str.size(); i++){
+        for(int j = 0; j < 26; j++){
+            if(str[i] == alpha[j]){
+                check[j]++;
+                break;
+            }
+        }
+    }
+
+    for(int i = 0; i < 26; i++){
+        if(max < check[i]){
+            max = check[i];
+        }
+    }
+
+    for(int i = 0; i < 26; i++){
+        if(check[i] == max){
+            cout << alpha[i];
+        }
+    }
+
+    return 0;
+}
