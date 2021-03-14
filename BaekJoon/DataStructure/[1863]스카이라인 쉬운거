@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    freopen("input.txt", "r", stdin);
+
+    int n, x, y, ans = 0, arr[50002];
+    stack<int> s;
+
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        cin >> x >> y;
+        arr[i] = y;
+    }
+
+    for(int i = 0; i <= n; i++){
+        while(!s.empty() && s.top() > arr[i]){
+            s.pop();
+            ans++;
+        }
+        if(!s.empty() && s.top() == arr[i])
+            continue;
+        s.push(arr[i]);
+    }
+    cout << ans;
+
+    return 0;
+}
