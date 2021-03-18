@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+	
+	int T, tmp;
+	double ans = 0;
+	double cost[5] = { 350.34, 230.90, 190.55, 125.30, 180.90 };
+
+	cin >> T;
+
+	for (int test = 0; test < T; test++) {
+		ans = 0;
+		for (int i = 0; i < 5; i++) {
+			cin >> tmp;
+			ans += cost[i] * tmp;
+		}
+		cout << fixed;
+		cout.precision(2);
+		cout << "$" << ans << '\n';
+	}
+
+	return 0;
+}
