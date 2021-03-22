@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int gcd(long long a, long long b) {
+	long long c;
+	while (b) {
+		c = a % b;
+		a = b;
+		b = c;
+	}
+	return a;
+}
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	long long n, a, b;
+
+	cin >> n;
+
+	for (int test = 0; test < n; test++) {
+		cin >> a >> b;
+		cout << (a * b) / gcd(a, b) << '\n';
+	}
+
+	return 0;
+}
