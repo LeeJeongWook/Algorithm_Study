@@ -24,17 +24,16 @@ int main() {
 		a.push_back(tmp);
 	}
 
+	sort(a.begin(), a.end());
+
 	for (int i = 0; i < M; i++) {
 		cin >> tmp;
-
-		iter = find(a.begin(), a.end(), tmp);
 		
-		if (iter != a.end()) {
+		if (binary_search(a.begin(), a.end(), tmp)) {
 			ans.push_back(tmp);
 			cnt++;
 		}
 	}
-
 
 	sort(ans.begin(), ans.end());
 
