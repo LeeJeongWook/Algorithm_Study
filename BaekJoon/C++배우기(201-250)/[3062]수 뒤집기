@@ -1,0 +1,61 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int T, N, sum;
+
+	cin >> T;
+
+	for (int test = 0; test < T; test++) {
+		cin >> N;
+		
+		bool ans = true;
+		int amount = 1, tmp = 0, sum = 0;
+		vector<int> a, b;
+		
+		sum += N;
+		while (N) {
+			a.push_back(N % 10);
+			N /= 10;
+		}
+
+		for (int i = a.size() - 1; i >= 0; i--) {
+			tmp += a[i] * amount;
+			amount *= 10;
+		}
+
+		sum +=  tmp;
+
+		while (sum) {
+			b.push_back(sum % 10);
+			sum /= 10;
+		}
+
+		int j = b.size() - 1;
+
+		for (int i = 0; i < b.size() / 2; i++) {
+			if (b[i] != b[j]) {
+				ans = false;
+				break;
+			}
+			j--;
+		}
+
+		if (ans == false) {
+			cout << "NO" << '\n';
+		}
+		else {
+			cout << "YES" << '\n';
+		}
+	}
+
+	return 0;
+}
