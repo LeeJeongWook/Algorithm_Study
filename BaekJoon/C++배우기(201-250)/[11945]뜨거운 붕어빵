@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int N, M;
+
+	cin >> N >> M;
+
+	for (int i = 0; i < N; i++) {
+		string str, tmp_str;
+		cin >> tmp_str;
+		
+		for (int j = tmp_str.size() - 1; j >= 0; j--) {
+			str.push_back(tmp_str[j]);
+		}
+		cout << str << '\n';
+	}
+
+	return 0;
+}
