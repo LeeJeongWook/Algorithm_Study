@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+#include <set>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int n;
+	string a, b;
+	set<string> s;
+
+	cin >> n;
+
+	for (int test = 0; test < n; test++) {
+		cin >> a >> b;
+		if (b == "enter") {
+			s.insert(a);
+		}
+		else {
+			s.erase(a);
+		}
+	}
+
+	for (auto iter = s.rbegin(); iter != s.rend(); iter++) {
+		cout << *iter << '\n';
+	}
+
+	return 0;
+}
