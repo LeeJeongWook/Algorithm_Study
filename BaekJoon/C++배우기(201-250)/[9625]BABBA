@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+#include <string>
+
+#define MAX 1000
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	//freopen("input.txt", "r", stdin);
+
+	int K, a[1000] = { 1, 0, 1, 0, }, b[1000] = { 0, 1, 1, 0, };
+	string str;
+
+	cin >> K;
+
+	if (K >= 3) {
+		for (int i = 3; i < K + 1; i++) {
+			a[i] = a[i - 2] + a[i - 1];
+			b[i] = b[i - 2] + b[i - 1];
+		}
+	}
+
+	cout << a[K] << " " << b[K];
+
+	return 0;
+}
