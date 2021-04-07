@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_DEPRECATE
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	freopen("input.txt", "r", stdin);
+
+	int t, n;
+
+	cin >> t;
+
+	for (int test = 0; test < t; test++) {
+		cin >> n;
+		long long koong[70] = { 1, 1, 2, 4, 0 };
+
+		if (n < 2) {
+			cout << 1 << '\n';
+		}
+		else if (n == 2) {
+			cout << 2 << '\n';
+		}
+		else if (n == 3) {
+			cout << 4 << '\n';
+		}
+		else if (n > 3) {
+			for (int i = 4; i <= n; i++) {
+				koong[i] = koong[i - 1] + koong[i - 2] + koong[i - 3] + koong[i - 4];
+			}
+			cout << koong[n] << '\n';
+		}
+	}
+
+	return 0;
+}
