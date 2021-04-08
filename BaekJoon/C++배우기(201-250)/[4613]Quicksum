@@ -10,23 +10,20 @@ int main() {
 	cout.tie(NULL);
 	freopen("input.txt", "r", stdin);
 
+	int checksum;
 	string str;
 
 	while (getline(cin, str)) {
+		checksum = 0;
 		if (str == "#")
 			break;
-		int ans = 0;
-		for (int i = 1; i <= str.size(); i++) {
-			int tmp = str[i] - 64;
-			if ((1 <= str[i]) && (str[i] < 27)) {
-				ans += i * tmp;
-			}
-			
+		for (int i = 0; i < str.size(); i++) {
+			if (str[i] == ' ')
+				continue;
+			checksum += (i + 1) * ((int)str[i] - 64);
 		}
-		cout << ans << endl;
-		
+		cout << checksum << '\n';
 	}
-	
 
 	return 0;
 }
